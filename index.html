@@ -72,7 +72,7 @@
     <br />
     <button id="start-button">Start</button>
     <button id="stop-button">Stop</button>
-    <!-- <hr /> -->
+    <hr />
 
     <!-- <h1>Scan from File:</h1>
     <input type="file" id="file-selector" />
@@ -92,8 +92,8 @@
       const camQrResultTimestamp = document.getElementById(
         "cam-qr-result-timestamp"
       );
-      // const fileSelector = document.getElementById("file-selector");
-      // const fileQrResult = document.getElementById("file-qr-result");
+      const fileSelector = document.getElementById("file-selector");
+      const fileQrResult = document.getElementById("file-qr-result");
 
       function setResult(label, result) {
         label.textContent = result;
@@ -167,16 +167,15 @@
 
       // ####### File Scanning #######
 
-      // fileSelector.addEventListener("change", (event) => {
-      //   const file = fileSelector.files[0];
-      //   if (!file) {
-      //     return;
-      //   }
-      //   QrScanner.scanImage(file)
-      //     .then((result) => setResult(fileQrResult, result))
-      //     .catch((e) => setResult(fileQrResult, e || "No QR code found."));
-      // }
-      // );
+      fileSelector.addEventListener("change", (event) => {
+        const file = fileSelector.files[0];
+        if (!file) {
+          return;
+        }
+        QrScanner.scanImage(file)
+          .then((result) => setResult(fileQrResult, result))
+          .catch((e) => setResult(fileQrResult, e || "No QR code found."));
+      });
     </script>
     <script src="js/main.js"></script>
   </body>

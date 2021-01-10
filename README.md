@@ -10,4 +10,5 @@ https://siddiqmohammed.github.io/progressive-web-app/
 
 In the manifest.json file
 
+"name": "Splash screen text",
 "short_name": "Name of the App",
