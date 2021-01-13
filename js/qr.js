@@ -3,17 +3,10 @@ QrScanner.WORKER_PATH = "../qr-scanner-worker.min.js";
 
 const video = document.getElementById("qr-video");
 const camHasCamera = document.getElementById("cam-has-camera");
-// const camHasFlash = document.getElementById("cam-has-flash");
-// const flashToggle = document.getElementById("flash-toggle");
-// const flashState = document.getElementById("flash-state");
 const camQrResult = document.getElementById("cam-qr-result");
-// const camQrResultTimestamp = document.getElementById("cam-qr-result-timestamp");
-// const fileSelector = document.getElementById("file-selector");
-// const fileQrResult = document.getElementById("file-qr-result");
 
 function setResult(label, result) {
   label.textContent = result;
-//   camQrResultTimestamp.textContent = new Date().toString();
   label.style.color = "teal";
   clearTimeout(label.highlightTimeout);
   label.highlightTimeout = setTimeout(
@@ -59,7 +52,7 @@ const scanner = new QrScanner(
 window.scanner = scanner;
 var x = 0;
 // function scanRegion() {
-    
+
 // }
 document.getElementById("show-scan-region").addEventListener("change", (e) => {
   const input = e.target;
@@ -71,18 +64,20 @@ document.getElementById("show-scan-region").addEventListener("change", (e) => {
   scanner.$canvas.style.display = input.checked ? "block" : "none";
 });
 
-// document
-//   .getElementById("inversion-mode-select")
-//   .addEventListener("change", (event) => {
-//     scanner.setInversionMode(event.target.value);
-//   });
 
-// scanner.setInversionMode(original);
+setInterval(function () {
+  if (x === 5) {
+    scanner.stop();
+
+  }
+  console.log(x);
+  x += 1
+}, 10000);
 
 document.getElementById("start-button").addEventListener("click", () => {
   scanner.start().then(() => {
     scanner.setInversionMode("original");
-    console.log("E");
+    x += 1;
     // scanner.$canvas.style.display = "block";
   });
 });
